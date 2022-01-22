@@ -5,6 +5,11 @@
     var authorname = document.getElementsByClassName("col-md-4")[0].children[1].children[1].children[1].innerHTML;
     var authortwitteracc = document.getElementsByClassName("col-md-4")[0].children[1].children[0].children[0].children[1].innerHTML;
     var defulttilename = novaltitle + " by " + authorname + authortwitteracc;
+    var novaldesc = "";
+    if(typeof document.getElementsByClassName("col-md-8")[0].children[2].children[1] !== 'undefined'){
+          novaldesc = document.getElementsByClassName("col-md-8")[0].children[2].children[1].innerText + "\n\n\n";
+    }
+   
     
 
     console.log("there are " + pages + " pages");
@@ -18,7 +23,7 @@
     //var textnobr = text.replace(/<br>/g, "");
     //var textnobrnobrcs = textnobr.replace(/<\/span>/g, "").replace(/<span class=".*?">/g, "");
 
-    console.log(text);  
+    //console.log(text);  
     //console.log(textnobrnobrcs);
     
 
@@ -29,7 +34,7 @@ dddisplayboxxx.innerHTML = "<b>Save</b>";
 dddisplayboxxx.addEventListener("click", save, false);
 dddisplayboxxx.style.position = "fixed";
 dddisplayboxxx.style.top = "60px";
-dddisplayboxxx.style.right = "10px";
+dddisplayboxxx.style.left = "10px";
 dddisplayboxxx.style.padding = "10px 24px";
 dddisplayboxxx.style.background = "#0378a6";
 dddisplayboxxx.style.color = "white";
@@ -45,8 +50,10 @@ console.log("displaybox Created!");
 
 //download converted string as .txt file
 function save(){
-var blob = new Blob([text], {type: "text/plain"});
+var blob = new Blob([novaltitle, "\n\n", novaldesc, text], {type: "text/plain"});
+    //console.log(blob.text());
 var url = URL.createObjectURL(blob);
+    //console.log(url);
 var anchor = document.createElement('a');
 anchor.href = url;
 anchor.download = defulttilename;
