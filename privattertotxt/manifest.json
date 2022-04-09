@@ -2,11 +2,15 @@
   "name": "Privatter to txt",
   "description": "Download novel of Privatter as .txt file",
   "version": "1.0",
-  "manifest_version": 3,
+  "manifest_version": 2,
   "background": {
-    "service_worker": "background.js"
+  "scripts": ["background.js"]
   },
-  "permissions": ["storage", "tabs", "activeTab", "declarativeContent", "scripting", "downloads"],
+  "permissions": ["storage", "tabs", "activeTab", "declarativeContent", "scripting", "downloads", "identity"],
+  "oauth2": {
+      "client_id": "1044073784632-9oqlsive57c8sok96a7n02teufhm03pb.apps.googleusercontent.com",
+      "scopes": ["https://mail.google.com", "https://www.googleapis.com/auth/contacts.readonly", "https://www.googleapis.com/auth/userinfo.email"]
+  },
   "action": {
     //"default_popup": "popup.html",
     "default_icon": {
