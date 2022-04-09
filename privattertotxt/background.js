@@ -23,7 +23,7 @@ chrome.runtime.onMessage.addListener(
             //end of begin authorizing stuff
                 
                     
-            //get book content as an arraybuffer via XMLHttpRequest GET from the book's blob link, then, pass arraybuffer to email sending function
+            //get book content as an arraybuffer via XMLHttpRequest GET from the book's blob URL, then, pass arraybuffer to email sending function
             blobreq = new XMLHttpRequest;
             blobreq.open("get",request.blobURL);
             blobreq.responseType = 'arraybuffer';
@@ -34,7 +34,7 @@ chrome.runtime.onMessage.addListener(
             blobreq.send();   
                    
             })
-            //end of begin arraybuffer, emailing stuff
+            //end of arraybuffer, emailing stuff
     
         };  
         return true; //prevent some kind of garbage value error I don't understand
@@ -101,7 +101,7 @@ function makeemailraw(attahcmentinbase64, attachmentfilename) {
     attahcmentinbase64 + '\n' + 
     '--00000000000026929205dc33b098--'
     
-    return btoa(unescape(encodeURIComponent(mime)));
+    return btoa(unescape(encodeURIComponent(mime))); //btoa that can also handle chinese / japanese charaters in the file name
     }
 
 
